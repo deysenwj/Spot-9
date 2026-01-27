@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kampung Warna Warni Jodipan - Frame Pertama</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#ec4913",
+            "background-light": "#fdfbf7",
+            "background-dark": "#1a100d",
+            "accent-gold": "#b08d4a",
+            "heritage-brown": "#3d2b1f",
+          },
+          fontFamily: {
+            "display": ["Playfair Display", "serif"],
+            "sans": ["Plus Jakarta Sans", "sans-serif"]
+          },
+          borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer components {
+      .batik-overlay {
+        background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0l60 60L0 120V0zm120 0L60 60l60 60V0zM60 0L0 60l60 60 60-60L60 0z' fill='%23b08d4a' fill-opacity='0.15' fill-rule='evenodd'/%3E%3Cpath d='M30 0l30 30-30 30-30-30 30-30zm60 0l30 30-30 30-30-30 30-30zM30 60l30 30-30 30-30-30 30-30zm60 0l30 30-30 30-30-30 30-30z' fill='%23ec4913' fill-opacity='0.08' fill-rule='evenodd'/%3E%3C/svg%3E");
+        background-size: 180px;
+        mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+      }
+      .premium-tag {
+        @apply relative px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] flex items-center gap-2;
+        border: 1.5px solid;
+        clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
+      }
+    }
+    body {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      scroll-snap-type: y mandatory;
+    }
+    section {
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: #fdfbf7; }
+    ::-webkit-scrollbar-thumb { background: #b08d4a; }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-heritage-brown dark:text-[#fcf9f8] antialiased overflow-y-scroll h-screen">
+
+  <!-- HEADER -->
+  <header class="fixed top-0 left-0 w-full z-50 p-6 md:p-10 flex justify-between items-center pointer-events-none">
+    <div class="flex items-center gap-5 text-heritage-brown pointer-events-auto bg-white/90 dark:bg-background-dark/90 backdrop-blur-xl px-8 py-4 rounded-sm border-b-2 border-accent-gold shadow-2xl">
+      <div class="size-8 text-primary">
+        <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z" fill="currentColor"></path>
+          <path d="M20 20H28V28H20V20Z" fill="white" fill-opacity="0.3"></path>
+        </svg>
+      </div>
+      <div class="flex flex-col">
+        <h1 class="text-heritage-brown dark:text-white text-sm font-black tracking-[0.2em] uppercase">Jodipan</h1>
+        <span class="text-[9px] text-accent-gold font-bold tracking-[0.1em] uppercase">Cultural Heritage District</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN: Frame Pertama -->
+  <main class="relative z-10 h-screen">
+    <section class="h-screen w-full flex flex-col md:flex-row border-b border-accent-gold/10 overflow-hidden">
+      <div class="w-full md:w-1/2 h-full flex flex-col justify-center px-12 lg:px-24 py-20 bg-background-light dark:bg-background-dark relative">
+        <div class="absolute inset-0 batik-overlay opacity-[0.2] dark:opacity-[0.1] pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-background-light via-background-light/95 to-transparent pointer-events-none"></div>
+        <div class="max-w-xl relative z-10">
+          <div class="flex gap-4 mb-10">
+            <div class="premium-tag border-primary/30 text-primary bg-primary/5">
+              <span class="opacity-60">Wilayah</span>
+              <span>Malang Tengah</span>
+            </div>
+            <div class="premium-tag border-accent-gold/30 text-accent-gold bg-accent-gold/5">
+              <span class="opacity-60">Spot Foto</span>
+              <span>Panoramic View</span>
+            </div>
+          </div>
+          <h2 class="text-5xl lg:text-7xl font-display font-medium mb-10 leading-tight text-heritage-brown dark:text-white italic">
+            The Iconic <span class="not-italic font-black block text-primary mt-2">Old Iron Bridge</span>
+          </h2>
+          <div class="space-y-8 text-lg text-heritage-brown/80 dark:text-[#fcf9f8]/80 leading-relaxed font-light border-l-2 border-accent-gold/20 pl-8">
+            <p>Constructed decades ago, this historic iron structure serves as the primary gateway to the village. It offers a panoramic view of the vibrant houses lining the Brantas riverbanks.</p>
+            <p class="text-base italic">Historically, this bridge was a simple transport link, but today it stands as a testament to the village's transformation.</p>
+          </div>
+        </div>
+      </div>
+      <div class="w-full md:w-1/2 h-full relative group">
+        <div class="w-full h-full bg-cover bg-center transition-transform duration-1000 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuByrjcI1zP0Q-CkTQUPFCubt-lTrG2W24fXbledsgxVk4kAks_Ve2P76YIzL8Kp5IMqdg_EBq-PU8L1SNB-Jza74uPAdG7q-eFcpGV8x2Z5RgkWhqEy5t4InX4cJrmjmvEMyGAVU1jzKfHPoMJB6_yMX14LbO-Dl2MbWERQFF9Uyxtc3COVoOBzaK1vNf9e4IYeK7YlNvsknmKaYUDsCQJaIUU2swRfLPhfnl5tle1iAEi86kbu33DencoUnhKOS9KJebdEJZTRuyk");'></div>
+        <div class="absolute inset-0 bg-heritage-brown/10 mix-blend-multiply"></div>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
