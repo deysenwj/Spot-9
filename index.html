@@ -68,6 +68,13 @@
       position: relative;
     }
     
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    
     ::-webkit-scrollbar { 
       width: 3px; 
     }
@@ -120,9 +127,13 @@
         
         <!-- Image Section - Upper Half -->
         <div class="w-full h-[45vh] relative overflow-hidden">
-          <div class="w-full h-full bg-cover bg-center transform scale-105" 
-               style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuByrjcI1zP0Q-CkTQUPFCubt-lTrG2W24fXbledsgxVk4kAks_Ve2P76YIzL8Kp5IMqdg_EBq-PU8L1SNB-Jza74uPAdG7q-eFcpGV8x2Z5RgkWhqEy5t4InX4cJrmjmvEMyGAVU1jzKfHPoMJB6_yMX14LbO-Dl2MbWERQFF9Uyxtc3COVoOBzaK1vNf9e4IYeK7YlNvsknmKaYUDsCQJaIUU2swRfLPhfnl5tle1iAEi86kbu33DencoUnhKOS9KJebdEJZTRuyk");'>
-          </div>
+          <!-- Gambar dari folder lokal -->
+          <img 
+            src="images/jembatan-besi.jpg" 
+            alt="Jembatan Besi Tua Kampung Jodipan" 
+            class="hero-image transform scale-105"
+            loading="eager"
+          />
           <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background-light"></div>
           <div class="absolute inset-0 bg-heritage-brown/5 mix-blend-multiply"></div>
         </div>
@@ -147,13 +158,13 @@
             <!-- Title -->
             <h2 class="text-3xl sm:text-4xl font-display font-medium mb-5 leading-tight text-heritage-brown dark:text-white italic">
               The Iconic 
-              <span class="not-italic font-black block text-primary mt-1">Old Iron Bridge</span>
+              <span class="not-italic font-black block text-primary mt-1">Chameleon</span>
             </h2>
             
             <!-- Description -->
             <div class="space-y-4 text-sm sm:text-base text-heritage-brown/80 dark:text-[#fcf9f8]/80 leading-relaxed font-light border-l-2 border-accent-gold/20 pl-4 flex-1">
               <p>Mural bunglon di Kampung Warna-Warni Jodipan melambangkan adaptasi dan perubahan masyarakat. Seperti bunglon, kampung ini bertransformasi menjadi kawasan wisata kreatif. Warna cerah mencerminkan keberagaman, kebersamaan, dan harapan akan nilai sosial, budaya, serta ekonomi.</p>
-              <p class="text-xs sm:text-sm italic opacity-90">The chameleon mural in Kampung Warna-Warni Jodipan symbolizes adaptation and social change. Like a chameleon, the area has transformed into a creative tourist village, with bright colors reflecting diversity, unity, and hope for social, cultural, and economic value.</p>
+              <p class="text-xs sm:text-sm italic opacity-90">The chameleon mural in Kampung Warna-Warni Jodipan represents adaptation and transformation. Just like a chameleon, the village has changed into a colorful and creative tourist destination that reflects diversity, togetherness, and hope.</p>
             </div>
             
             <!-- Scroll Indicator (Optional) -->
@@ -174,5 +185,4 @@
   <!-- Optional: Add more frames/sections below for scrolling -->
   
 </body>
-</html>
 </html>
