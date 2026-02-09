@@ -51,6 +51,36 @@
       .red-gradient {
         background: linear-gradient(180deg, #dc2626 0%, #991b1b 100%);
       }
+
+      .map-info-btn {
+        @apply size-9 flex items-center justify-center bg-primary hover:bg-primary-dark rounded-lg shadow-lg transition-all duration-300 active:scale-95;
+        border: 2px solid rgba(251, 191, 36, 0.3);
+      }
+
+      .modal-overlay {
+        @apply fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4;
+        animation: fadeIn 0.3s ease-out;
+      }
+
+      .modal-content {
+        @apply relative bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[85vh] overflow-hidden;
+        animation: slideUp 0.4s ease-out;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px) scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .close-btn {
+        @apply absolute top-3 right-3 z-10 size-10 flex items-center justify-center bg-primary hover:bg-primary-dark text-white rounded-full shadow-lg transition-all duration-300 active:scale-90;
+      }
     }
     
     * {
@@ -119,27 +149,79 @@
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    .hidden {
+      display: none;
+    }
   </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-heritage-brown dark:text-[#fcf9f8] antialiased">
 
   <div class="mobile-container">
-    <!-- HEADER - Professional Glass Effect -->
+    <!-- HEADER - Professional Glass Effect with Map Info Button -->
     <header class="fixed top-0 left-0 w-full z-50 px-4 py-3">
-      <div class="flex items-center gap-3.5 text-heritage-brown glass-effect px-5 py-3 rounded-lg border border-white/20 shadow-xl max-w-full">
-        <div class="size-9 flex-shrink-0 p-1 bg-white rounded-lg shadow-sm">
-          <img 
-            src="images/logo-jodipan.png" 
-            alt="Logo Kampung Jodipan" 
-            class="w-full h-full object-contain"
-          />
+      <div class="flex items-center justify-between gap-3.5 text-heritage-brown glass-effect px-5 py-3 rounded-lg border border-white/20 shadow-xl max-w-full">
+        <div class="flex items-center gap-3.5 min-w-0">
+          <div class="size-9 flex-shrink-0 p-1 bg-white rounded-lg shadow-sm">
+            <img 
+              src="images/logo-jodipan.png" 
+              alt="Logo Kampung Jodipan" 
+              class="w-full h-full object-contain"
+            />
+          </div>
+          <div class="flex flex-col min-w-0">
+            <h1 class="text-heritage-brown text-sm font-black tracking-[0.12em] uppercase truncate">Jodipan</h1>
+            <span class="text-[9px] text-primary font-bold tracking-[0.08em] uppercase truncate">Kampung Warna Warni</span>
+          </div>
         </div>
-        <div class="flex flex-col min-w-0">
-          <h1 class="text-heritage-brown text-sm font-black tracking-[0.12em] uppercase truncate">Jodipan</h1>
-          <span class="text-[9px] text-primary font-bold tracking-[0.08em] uppercase truncate">Kampung Warna Warni</span>
-        </div>
+        
+        <!-- Map Info Button -->
+        <button 
+          onclick="openMapModal()" 
+          class="map-info-btn flex-shrink-0"
+          aria-label="Map Info"
+        >
+          <svg class="w-5 h-5 text-accent-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+          </svg>
+        </button>
       </div>
     </header>
+
+    <!-- Map Info Modal -->
+    <div id="mapModal" class="modal-overlay hidden" onclick="closeMapModal(event)">
+      <div class="modal-content" onclick="event.stopPropagation()">
+        <!-- Close Button -->
+        <button onclick="closeMapModal()" class="close-btn">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+        
+        <!-- Modal Header -->
+        <div class="bg-gradient-to-r from-primary to-primary-dark px-6 py-4 border-b-4 border-accent-gold">
+          <h3 class="text-white text-xl font-black uppercase tracking-wider flex items-center gap-3">
+            <svg class="w-6 h-6 text-accent-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+            </svg>
+            Map Info
+          </h3>
+          <p class="text-accent-gold text-xs mt-1 font-medium">Peta Lokasi Kampung Warna Warni Jodipan</p>
+        </div>
+        
+        <!-- Modal Body with Image -->
+        <div class="overflow-y-auto max-h-[calc(85vh-100px)]">
+          <div class="p-6">
+            <img 
+              src="images/map-jodipan.jpg" 
+              alt="Peta Kampung Warna Warni Jodipan" 
+              class="w-full h-auto rounded-lg shadow-xl"
+              onerror="this.src='https://via.placeholder.com/800x600/dc2626/ffffff?text=Map+Image+Not+Found'"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- MAIN: Frame Pertama - Professional Layout -->
     <main class="relative w-full min-h-screen pt-16">
@@ -222,6 +304,30 @@
       </section>
     </main>
   </div>
+
+  <script>
+    function openMapModal() {
+      const modal = document.getElementById('mapModal');
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMapModal(event) {
+      if (event && event.target !== event.currentTarget) {
+        return;
+      }
+      const modal = document.getElementById('mapModal');
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeMapModal();
+      }
+    });
+  </script>
   
 </body>
 </html>
